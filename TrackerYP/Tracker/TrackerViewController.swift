@@ -3,16 +3,17 @@ import UIKit
 final class TrackersViewController: UIViewController {
     
     private lazy var addButton: UIButton = {
-        let button = UIButton.systemButton(
-            with: UIImage(
-                systemName: "plus",
-                withConfiguration: UIImage.SymbolConfiguration(
-                    pointSize: 18,
-                    weight: .bold
-                )
-            )!,
-            target: self,
-            action: #selector(didTapPlusButton))
+        guard let plusImage = UIImage(
+            systemName: "plus",
+            withConfiguration: UIImage.SymbolConfiguration(
+                pointSize: 18,
+                weight: .bold
+            )
+        ) else {
+            return UIButton()
+        }
+        
+        let button = UIButton.systemButton(with: plusImage, target: self, action: #selector(didTapPlusButton))
         button.tintColor = .black
         return button
     }()
@@ -93,6 +94,7 @@ final class TrackersViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         configureViews()
         configureConstraints()
         trackerLabel.configureLabel(
@@ -105,15 +107,43 @@ final class TrackersViewController: UIViewController {
         searchSpacePlaceholderStack.configurePlaceholderStack(imageName: "EmojiNothingFound", text: "Ничего не найдено")
         checkMainPlaceholderVisability()
         checkPlaceholderVisabilityAfterSearch()
+        
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    private func configureNavigationBar() {
+        let trackersViewController = TrackersViewController()
+        let navigationController = UINavigationController(rootViewController: trackersViewController)
+        
+        // Создаем UIView и добавляем кнопку как его подпредставление
+        let addButtonContainerView = UIView()
+        addButtonContainerView.addSubview(addButton)
+        
+        // Создаем UIBarButtonItem, используя addButtonContainerView как пользовательское представление
+        let addButtonItem = UIBarButtonItem(
+            customView: addButtonContainerView
+        )
+        
+        trackersViewController.navigationItem.leftBarButtonItem = addButtonItem
+        
+        // Создаем экземпляр UIBarButtonItem для datePicker
+        let datePickerButtonItem = UIBarButtonItem(customView: datePicker)
+        trackersViewController.navigationItem.rightBarButtonItem = datePickerButtonItem
     }
     
     // MARK: - Actions
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
     @objc private func didTapPlusButton() {
         let setTrackersViewController = SetTrackersViewController()
         setTrackersViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: setTrackersViewController)
         present(navigationController, animated: true)
-        
     }
     
     @objc private func didChangedDatePicker(_ sender: UIDatePicker) {
@@ -155,21 +185,27 @@ private extension TrackersViewController {
         NSLayoutConstraint.activate([
             trackerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 0.1083),
             trackerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 18),
+            
             datePicker.widthAnchor.constraint(equalToConstant: 120),
-            datePicker.centerYAnchor.constraint(equalTo: trackerLabel.centerYAnchor),
+            datePicker.centerYAnchor.constraint(equalTo: addButton.centerYAnchor),
             datePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
             addButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 18),
             addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 0.07019),
+            
             searchField.topAnchor.constraint(equalTo: trackerLabel.bottomAnchor, constant: 7),
             searchField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
             searchField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
             searchField.heightAnchor.constraint(equalToConstant: 36),
+            
             collectionView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 34),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
             mainSpacePlaceholderStack.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 0.495),
             mainSpacePlaceholderStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             searchSpacePlaceholderStack.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 0.495),
             searchSpacePlaceholderStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
@@ -199,7 +235,7 @@ extension TrackersViewController: UICollectionViewDataSource {
         let tracker = visibleCategories[indexPath.section].trackers[indexPath.row]
         let daysCount = completedTrackers.filter { $0.trackerId == tracker.id }.count
         let isCompleted = completedTrackers.contains { $0.date == currentDate && $0.trackerId == tracker.id }
-        trackerCell.configure(with: tracker, days: daysCount, isCompleted: isCompleted)
+        trackerCell.configure(with: tracker, days: daysCount, isCompleted: isCompleted, date: currentDate)
         trackerCell.delegate = self
         return trackerCell
     }
@@ -295,7 +331,7 @@ extension TrackersViewController: TrackerFormViewControllerDelegate {
         dismiss(animated: true)
     }
 }
- 
+
 // MARK: - UISearchBarDelegate
 extension TrackersViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchField: UISearchBar) -> Bool {
@@ -304,7 +340,7 @@ extension TrackersViewController: UISearchBarDelegate {
         return true
     }
     
-    func searchField(_ searchField: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchField: UISearchBar, textDidChange searchText: String) {
         self.searchText = searchText
         collectionView.reloadData()
         checkPlaceholderVisabilityAfterSearch()

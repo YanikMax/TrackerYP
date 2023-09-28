@@ -6,6 +6,7 @@ protocol TrackerCellDelegate: AnyObject {
 
 final class TrackerCell: UICollectionViewCell {
     // MARK: - Layout elements
+    private var isDateInFuture: Bool = false
     
     private let cardView: UIView = {
         let view = UIView()
@@ -19,7 +20,7 @@ final class TrackerCell: UICollectionViewCell {
         view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
         return view
     }()
-     
+    
     private let emoji: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
@@ -81,14 +82,20 @@ final class TrackerCell: UICollectionViewCell {
     }
     
     // MARK: - Methods
-    func configure(with tracker: Tracker, days: Int, isCompleted: Bool) {
+    func configure(with tracker: Tracker, days: Int, isCompleted: Bool, date: Date) {
         self.tracker = tracker
         self.days = days
         cardView.backgroundColor = tracker.color
         emoji.text = tracker.emoji
         trackerLabel.text = tracker.title
         addDayButton.backgroundColor = tracker.color
-        switchAddDayButton(to: isCompleted)
+        updateDaysLabel(days)
+        
+        // Определить, является ли дата будущей
+        isDateInFuture = date > Date()
+        
+        // Если дата в будущем, запретите отметку карточки
+        switchAddDayButton(to: isCompleted || isDateInFuture)
     }
     
     func switchAddDayButton(to isCompleted: Bool) {
@@ -103,15 +110,23 @@ final class TrackerCell: UICollectionViewCell {
     
     func increaseCount() {
         days += 1
+        updateDaysLabel(days)
     }
     
     func decreaseCount() {
         days -= 1
+        updateDaysLabel(days)
+    }
+    
+    private func updateDaysLabel(_ count: Int) {
+        daysCountLabel.text = count.days()
     }
     
     // MARK: - Actions
     @objc private func didTapAddDayButton() {
-        guard let tracker else { return }
+        guard let tracker = tracker, !isDateInFuture else {
+            return
+        }
         delegate?.didTapCompleteButton(of: self, with: tracker)
     }
 }

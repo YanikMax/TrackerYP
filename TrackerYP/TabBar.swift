@@ -1,11 +1,12 @@
 import UIKit
- 
+
 class TabBarViewController: UITabBarController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.tintColor = .blue
+        let blueColor = UIColor(red: 55/255, green: 114/255, blue: 231/255, alpha: 1.0)
+        tabBar.tintColor = blueColor
         tabBar.barTintColor = .gray
         tabBar.backgroundColor = .white
         
@@ -18,12 +19,12 @@ class TabBarViewController: UITabBarController {
         
         trackersViewController.tabBarItem = UITabBarItem(
             title: "Трекеры",
-            image: UIImage(systemName: "smallcircle.filled.circle"),
+            image: UIImage(systemName: "smallcircle.filled.circle.fill"),
             selectedImage: nil
         )
         statisticViewController.tabBarItem = UITabBarItem(
             title: "Статистика",
-            image: UIImage(systemName: "hare"),
+            image: UIImage(systemName: "hare.fill"),
             selectedImage: nil
         )
         

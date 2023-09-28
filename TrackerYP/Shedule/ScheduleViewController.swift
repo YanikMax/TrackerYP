@@ -12,7 +12,7 @@ final class ScheduleViewController: UIViewController {
         let table = UITableView()
         table.register(WeekdayCell.self, forCellReuseIdentifier: WeekdayCell.identifier)
         table.separatorStyle = .none
-        table.isScrollEnabled = false
+        table.alwaysBounceVertical = true // Включаем прокрутку
         return table
     }()
     

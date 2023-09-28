@@ -141,9 +141,18 @@ final class TrackerFormViewController: UIViewController {
         data.color = colors.randomElement()
         
         checkFromValidation()
+        
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - Actions
+    
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
     
     @objc private func didChangedLabelTextField(_ sender: UITextField) {
         guard let text = sender.text else { return }
