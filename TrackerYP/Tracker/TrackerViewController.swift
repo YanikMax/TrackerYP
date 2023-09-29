@@ -115,23 +115,17 @@ final class TrackersViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
-        let trackersViewController = TrackersViewController()
-        let navigationController = UINavigationController(rootViewController: trackersViewController)
-        
         // Создаем UIView и добавляем кнопку как его подпредставление
         let addButtonContainerView = UIView()
         addButtonContainerView.addSubview(addButton)
         
         // Создаем UIBarButtonItem, используя addButtonContainerView как пользовательское представление
-        let addButtonItem = UIBarButtonItem(
-            customView: addButtonContainerView
-        )
-        
-        trackersViewController.navigationItem.leftBarButtonItem = addButtonItem
+        let addButtonItem = UIBarButtonItem(customView: addButton)
+        navigationItem.leftBarButtonItem = addButtonItem
         
         // Создаем экземпляр UIBarButtonItem для datePicker
         let datePickerButtonItem = UIBarButtonItem(customView: datePicker)
-        trackersViewController.navigationItem.rightBarButtonItem = datePickerButtonItem
+        navigationItem.rightBarButtonItem = datePickerButtonItem
     }
     
     // MARK: - Actions
@@ -167,11 +161,9 @@ final class TrackersViewController: UIViewController {
 private extension TrackersViewController {
     func configureViews() {
         view.backgroundColor = .white
-        [trackerLabel, addButton, datePicker, searchField, collectionView, mainSpacePlaceholderStack, searchSpacePlaceholderStack].forEach { view.addSubview($0) }
+        [trackerLabel, searchField, collectionView, mainSpacePlaceholderStack, searchSpacePlaceholderStack].forEach { view.addSubview($0) }
         
-        addButton.translatesAutoresizingMaskIntoConstraints = false
         trackerLabel.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
         searchField.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         mainSpacePlaceholderStack.translatesAutoresizingMaskIntoConstraints = false
@@ -185,13 +177,6 @@ private extension TrackersViewController {
         NSLayoutConstraint.activate([
             trackerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 0.1083),
             trackerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 18),
-            
-            datePicker.widthAnchor.constraint(equalToConstant: 120),
-            datePicker.centerYAnchor.constraint(equalTo: addButton.centerYAnchor),
-            datePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            
-            addButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 18),
-            addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 0.07019),
             
             searchField.topAnchor.constraint(equalTo: trackerLabel.bottomAnchor, constant: 7),
             searchField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),

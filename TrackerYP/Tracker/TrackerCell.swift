@@ -94,7 +94,7 @@ final class TrackerCell: UICollectionViewCell {
         // Определить, является ли дата будущей
         isDateInFuture = date > Date()
         
-        // Если дата в будущем, запретите отметку карточки
+        // Если дата в будущем, запретить отметку карточки
         switchAddDayButton(to: isCompleted || isDateInFuture)
     }
     

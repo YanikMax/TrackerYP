@@ -14,7 +14,7 @@ class TabBarViewController: UITabBarController {
         tabBar.layer.borderWidth = 1
         tabBar.layer.masksToBounds = true
         
-        let trackersViewController = TrackersViewController()
+        let trackersViewController = UINavigationController(rootViewController: TrackersViewController())
         let statisticViewController = StatisticViewController()
         
         trackersViewController.tabBarItem = UITabBarItem(
