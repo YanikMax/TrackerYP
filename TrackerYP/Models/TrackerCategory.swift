@@ -1,32 +1,11 @@
 import UIKit
- 
+
 struct TrackerCategory {
     let label: String
-    let trackers: [Tracker]
+    let id: UUID
     
-    init(label: String, trackers: [Tracker]) {
+    init(label: String, id: UUID = UUID()) {
         self.label = label
-        self.trackers = trackers
+        self.id = id
     }
-}
-
-extension TrackerCategory {
-    static let mockData: [TrackerCategory]
-    = [
-        TrackerCategory(
-            label: "Работа",
-            trackers: [
-            ]
-        ),
-        TrackerCategory(
-            label: "Учеба",
-            trackers: [
-            ]
-        ),
-        TrackerCategory(
-            label: "Домашние дела",
-            trackers: [
-            ]
-        )
-    ]
 }

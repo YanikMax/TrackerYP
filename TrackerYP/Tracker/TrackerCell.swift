@@ -57,7 +57,7 @@ final class TrackerCell: UICollectionViewCell {
     private var tracker: Tracker?
     private var days = 0 {
         willSet {
-            daysCountLabel.text = "\(newValue)"
+            daysCountLabel.text = "\(newValue.days())"
         }
     }
     
@@ -89,7 +89,6 @@ final class TrackerCell: UICollectionViewCell {
         emoji.text = tracker.emoji
         trackerLabel.text = tracker.title
         addDayButton.backgroundColor = tracker.color
-        updateDaysLabel(days)
         
         // Определить, является ли дата будущей
         isDateInFuture = date > Date()
@@ -110,24 +109,20 @@ final class TrackerCell: UICollectionViewCell {
     
     func increaseCount() {
         days += 1
-        updateDaysLabel(days)
     }
     
     func decreaseCount() {
         days -= 1
-        updateDaysLabel(days)
-    }
-    
-    private func updateDaysLabel(_ count: Int) {
-        daysCountLabel.text = count.days()
     }
     
     // MARK: - Actions
     @objc private func didTapAddDayButton() {
-        guard let tracker = tracker, !isDateInFuture else {
-            return
+        guard let tracker = self.tracker else { return }
+        
+        // Проверка, можно ли отметить трекер как выполненный
+        if !isDateInFuture {
+            delegate?.didTapCompleteButton(of: self, with: tracker)
         }
-        delegate?.didTapCompleteButton(of: self, with: tracker)
     }
 }
 

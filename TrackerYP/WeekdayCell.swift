@@ -1,5 +1,5 @@
 import UIKit
- 
+
 protocol WeekdayCellDelegate: AnyObject {
     func didToggleSwitchView(to isSelected: Bool, of weekday: WeekDay)
 }
@@ -18,7 +18,8 @@ final class WeekdayCell: UITableViewCell {
     
     private lazy var switchView: UISwitch = {
         let switchView = UISwitch()
-        switchView.onTintColor = .blue
+        let blueColor = UIColor(red: 55/255, green: 114/255, blue: 231/255, alpha: 1.0)
+        switchView.onTintColor = blueColor
         switchView.addTarget(self, action: #selector(didToggleSwitchView), for: .valueChanged)
         return switchView
     }()

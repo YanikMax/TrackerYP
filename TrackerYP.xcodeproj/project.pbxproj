@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28062AA02ACC9A410066BFFE /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28062A9F2ACC9A410066BFFE /* EmojiCollectionViewCell.swift */; };
+		28062AA22AD747A10066BFFE /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28062AA12AD747A10066BFFE /* ColorCollectionViewCell.swift */; };
+		2818C4FA2AF496C400111B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2818C4F92AF496C400111B51 /* Main.storyboard */; };
+		2818C4FC2AF496D700111B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2818C4FB2AF496D700111B51 /* LaunchScreen.storyboard */; };
+		2818C4FF2AF6D0D900111B51 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2818C4FD2AF6D0D900111B51 /* Model.xcdatamodeld */; };
+		2818C5012AF6D2EF00111B51 /* TrackerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2818C5002AF6D2EF00111B51 /* TrackerStore.swift */; };
+		2818C5032AF6D3C500111B51 /* TrackerCategoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2818C5022AF6D3C500111B51 /* TrackerCategoryStore.swift */; };
+		2818C5052AF6D42F00111B51 /* TrackerRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2818C5042AF6D42F00111B51 /* TrackerRecordStore.swift */; };
 		28F528C22AC239BF002B1C7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528C12AC239BF002B1C7F /* AppDelegate.swift */; };
 		28F528C42AC239BF002B1C7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528C32AC239BF002B1C7F /* SceneDelegate.swift */; };
-		28F528C92AC239BF002B1C7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F528C72AC239BF002B1C7F /* Main.storyboard */; };
 		28F528CB2AC239C0002B1C7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28F528CA2AC239C0002B1C7F /* Assets.xcassets */; };
-		28F528CE2AC239C0002B1C7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F528CC2AC239C0002B1C7F /* LaunchScreen.storyboard */; };
 		28F528DA2AC23B4A002B1C7F /* GeometricParamsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528D62AC23B4A002B1C7F /* GeometricParamsExtension.swift */; };
 		28F528DB2AC23B4A002B1C7F /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528D72AC23B4A002B1C7F /* UILabelExtension.swift */; };
 		28F528DC2AC23B4A002B1C7F /* PlaceholderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528D82AC23B4A002B1C7F /* PlaceholderExtension.swift */; };
@@ -30,19 +36,25 @@
 		28F528F92AC23B75002B1C7F /* TrackerRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528F52AC23B75002B1C7F /* TrackerRecord.swift */; };
 		28F529002AC23B9F002B1C7F /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528FA2AC23B9F002B1C7F /* TabBar.swift */; };
 		28F529012AC23B9F002B1C7F /* WeekdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528FB2AC23B9F002B1C7F /* WeekdayCell.swift */; };
-		28F529022AC23B9F002B1C7F /* ColorEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528FC2AC23B9F002B1C7F /* ColorEmoji.swift */; };
+		28F529022AC23B9F002B1C7F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528FC2AC23B9F002B1C7F /* Color.swift */; };
 		28F529032AC23B9F002B1C7F /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528FD2AC23B9F002B1C7F /* ListCell.swift */; };
 		28F529052AC23B9F002B1C7F /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F528FF2AC23B9F002B1C7F /* Emoji.swift */; };
 		28F529072AC23BCF002B1C7F /* ListOfItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F529062AC23BCF002B1C7F /* ListOfItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28062A9F2ACC9A410066BFFE /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
+		28062AA12AD747A10066BFFE /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		2818C4F92AF496C400111B51 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2818C4FB2AF496D700111B51 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2818C4FE2AF6D0D900111B51 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2818C5002AF6D2EF00111B51 /* TrackerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerStore.swift; sourceTree = "<group>"; };
+		2818C5022AF6D3C500111B51 /* TrackerCategoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryStore.swift; sourceTree = "<group>"; };
+		2818C5042AF6D42F00111B51 /* TrackerRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecordStore.swift; sourceTree = "<group>"; };
 		28F528BE2AC239BF002B1C7F /* TrackerYP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackerYP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F528C12AC239BF002B1C7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28F528C32AC239BF002B1C7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		28F528C82AC239BF002B1C7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28F528CA2AC239C0002B1C7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		28F528CD2AC239C0002B1C7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28F528CF2AC239C0002B1C7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28F528D62AC23B4A002B1C7F /* GeometricParamsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricParamsExtension.swift; sourceTree = "<group>"; };
 		28F528D72AC23B4A002B1C7F /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
@@ -62,7 +74,7 @@
 		28F528F52AC23B75002B1C7F /* TrackerRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerRecord.swift; sourceTree = "<group>"; };
 		28F528FA2AC23B9F002B1C7F /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		28F528FB2AC23B9F002B1C7F /* WeekdayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayCell.swift; sourceTree = "<group>"; };
-		28F528FC2AC23B9F002B1C7F /* ColorEmoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorEmoji.swift; sourceTree = "<group>"; };
+		28F528FC2AC23B9F002B1C7F /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		28F528FD2AC23B9F002B1C7F /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		28F528FF2AC23B9F002B1C7F /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		28F529062AC23BCF002B1C7F /* ListOfItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfItems.swift; sourceTree = "<group>"; };
@@ -79,10 +91,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28062AC92AE168480066BFFE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2818C4FD2AF6D0D900111B51 /* Model.xcdatamodeld */,
+				2818C5002AF6D2EF00111B51 /* TrackerStore.swift */,
+				2818C5022AF6D3C500111B51 /* TrackerCategoryStore.swift */,
+				2818C5042AF6D42F00111B51 /* TrackerRecordStore.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		28F528B52AC239BF002B1C7F = {
 			isa = PBXGroup;
 			children = (
 				28F528C02AC239BF002B1C7F /* TrackerYP */,
+				28062AC92AE168480066BFFE /* CoreData */,
 				28F528BF2AC239BF002B1C7F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,7 +127,9 @@
 				28F529062AC23BCF002B1C7F /* ListOfItems.swift */,
 				28F528FA2AC23B9F002B1C7F /* TabBar.swift */,
 				28F528FF2AC23B9F002B1C7F /* Emoji.swift */,
-				28F528FC2AC23B9F002B1C7F /* ColorEmoji.swift */,
+				28062A9F2ACC9A410066BFFE /* EmojiCollectionViewCell.swift */,
+				28F528FC2AC23B9F002B1C7F /* Color.swift */,
+				28062AA12AD747A10066BFFE /* ColorCollectionViewCell.swift */,
 				28F528F12AC23B75002B1C7F /* Models */,
 				28F528E62AC23B6F002B1C7F /* Tracker */,
 				28F528E12AC23B66002B1C7F /* Shedule */,
@@ -111,9 +137,9 @@
 				28F528D52AC23B4A002B1C7F /* Extension */,
 				28F528C12AC239BF002B1C7F /* AppDelegate.swift */,
 				28F528C32AC239BF002B1C7F /* SceneDelegate.swift */,
-				28F528C72AC239BF002B1C7F /* Main.storyboard */,
 				28F528CA2AC239C0002B1C7F /* Assets.xcassets */,
-				28F528CC2AC239C0002B1C7F /* LaunchScreen.storyboard */,
+				2818C4F92AF496C400111B51 /* Main.storyboard */,
+				2818C4FB2AF496D700111B51 /* LaunchScreen.storyboard */,
 				28F528CF2AC239C0002B1C7F /* Info.plist */,
 			);
 			path = TrackerYP;
@@ -228,9 +254,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28F528CE2AC239C0002B1C7F /* LaunchScreen.storyboard in Resources */,
+				2818C4FA2AF496C400111B51 /* Main.storyboard in Resources */,
+				2818C4FC2AF496D700111B51 /* LaunchScreen.storyboard in Resources */,
 				28F528CB2AC239C0002B1C7F /* Assets.xcassets in Resources */,
-				28F528C92AC239BF002B1C7F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +272,8 @@
 				28F529012AC23B9F002B1C7F /* WeekdayCell.swift in Sources */,
 				28F529002AC23B9F002B1C7F /* TabBar.swift in Sources */,
 				28F528EF2AC23B6F002B1C7F /* TrackerCategoryName.swift in Sources */,
+				2818C5032AF6D3C500111B51 /* TrackerCategoryStore.swift in Sources */,
+				2818C4FF2AF6D0D900111B51 /* Model.xcdatamodeld in Sources */,
 				28F528F72AC23B75002B1C7F /* Weekday.swift in Sources */,
 				28F528E02AC23B59002B1C7F /* StatisticViewController.swift in Sources */,
 				28F528F92AC23B75002B1C7F /* TrackerRecord.swift in Sources */,
@@ -254,7 +282,9 @@
 				28F528DD2AC23B4A002B1C7F /* DateExtension.swift in Sources */,
 				28F528E42AC23B66002B1C7F /* ScheduleViewController.swift in Sources */,
 				28F528C22AC239BF002B1C7F /* AppDelegate.swift in Sources */,
-				28F529022AC23B9F002B1C7F /* ColorEmoji.swift in Sources */,
+				2818C5012AF6D2EF00111B51 /* TrackerStore.swift in Sources */,
+				28F529022AC23B9F002B1C7F /* Color.swift in Sources */,
+				28062AA22AD747A10066BFFE /* ColorCollectionViewCell.swift in Sources */,
 				28F528EC2AC23B6F002B1C7F /* TrackerTextField.swift in Sources */,
 				28F528F62AC23B75002B1C7F /* TrackerCategory.swift in Sources */,
 				28F528C42AC239BF002B1C7F /* SceneDelegate.swift in Sources */,
@@ -262,32 +292,15 @@
 				28F529032AC23B9F002B1C7F /* ListCell.swift in Sources */,
 				28F528F02AC23B6F002B1C7F /* TrackerCell.swift in Sources */,
 				28F528EE2AC23B6F002B1C7F /* TrackerViewController.swift in Sources */,
+				2818C5052AF6D42F00111B51 /* TrackerRecordStore.swift in Sources */,
 				28F528DA2AC23B4A002B1C7F /* GeometricParamsExtension.swift in Sources */,
+				28062AA02ACC9A410066BFFE /* EmojiCollectionViewCell.swift in Sources */,
 				28F528DC2AC23B4A002B1C7F /* PlaceholderExtension.swift in Sources */,
 				28F529072AC23BCF002B1C7F /* ListOfItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		28F528C72AC239BF002B1C7F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28F528C82AC239BF002B1C7F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		28F528CC2AC239C0002B1C7F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28F528CD2AC239C0002B1C7F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		28F528D02AC239C0002B1C7F /* Debug */ = {
@@ -417,8 +430,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,8 +462,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,6 +503,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2818C4FD2AF6D0D900111B51 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2818C4FE2AF6D0D900111B51 /* Model.xcdatamodel */,
+			);
+			currentVersion = 2818C4FE2AF6D0D900111B51 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 28F528B62AC239BF002B1C7F /* Project object */;
 }

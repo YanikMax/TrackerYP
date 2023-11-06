@@ -77,7 +77,7 @@ extension SetTrackersViewController {
         case habit, irregularEvent
     }
 }
- 
+
 private extension SetTrackersViewController {
     // MARK: - Layout methods
     func configureViews() {

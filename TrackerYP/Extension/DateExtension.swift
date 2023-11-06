@@ -16,7 +16,7 @@ extension Date {
         return from(year: year, month: month, day: day)
     }
 }
- 
+
 extension Int {
     func days() -> String {
         var ending: String!

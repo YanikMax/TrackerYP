@@ -1,5 +1,5 @@
 import UIKit
- 
+
 final class ListCell: UITableViewCell {
     // MARK: - Layout elements
     
@@ -31,7 +31,7 @@ final class ListCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
+    
     
     // MARK: - Properties
     static let identifier = "ListCell"
