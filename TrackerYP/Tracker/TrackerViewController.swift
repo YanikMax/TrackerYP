@@ -127,12 +127,16 @@ final class TrackersViewController: UIViewController {
     }
     
     @objc private func didChangedDatePicker(_ sender: UIDatePicker) {
-        currentDate = Date.from(date: sender.date)!
-        do {
-            try trackerStore.loadFilteredTrackers(date: currentDate, searchString: searchText)
-            try trackerRecordStore.loadCompletedTrackers(by: currentDate)
-        } catch {}
-        collectionView.reloadData()
+        if let newDate = Date.from(date: sender.date) {
+            currentDate = newDate
+            do {
+                try trackerStore.loadFilteredTrackers(date: currentDate, searchString: searchText)
+                try trackerRecordStore.loadCompletedTrackers(by: currentDate)
+            } catch {
+                print("Произошла ошибка: \(error)")
+            }
+            collectionView.reloadData()
+        }
     }
     
     // MARK: - Methods

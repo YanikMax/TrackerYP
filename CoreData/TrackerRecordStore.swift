@@ -27,10 +27,10 @@ final class TrackerRecordStore: NSObject {
     // MARK: - Methods
     func add(_ newRecord: TrackerRecord) throws {
         let trackerCoreData = try trackerStore.getTrackerCoreData(by: newRecord.trackerId)
-        let TrackerRecordCoreData = TrackerRecordCoreData(context: context)
-        TrackerRecordCoreData.recordId = newRecord.id.uuidString
-        TrackerRecordCoreData.date = newRecord.date
-        TrackerRecordCoreData.tracker = trackerCoreData
+        let trackerRecordCoreData = TrackerRecordCoreData(context: context)
+        trackerRecordCoreData.recordId = newRecord.id.uuidString
+        trackerRecordCoreData.date = newRecord.date
+        trackerRecordCoreData.tracker = trackerCoreData
         try context.save()
         completedTrackers.insert(newRecord)
         delegate?.didUpdateRecords(completedTrackers)

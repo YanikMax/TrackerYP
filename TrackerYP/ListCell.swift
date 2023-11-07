@@ -52,6 +52,10 @@ final class ListCell: UITableViewCell {
     func configure(label: String, value: String?, position: ListOfItems.Position) {
         listItem.configure(with: position)
         nameLabel.text = label
+        
+        if let value {
+            valueLabel.text = value
+        }
     }
 }
 
