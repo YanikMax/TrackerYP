@@ -6,7 +6,7 @@ protocol SetTrackersViewControllerDelegate: AnyObject {
 
 final class SetTrackersViewController: UIViewController {
     
-    private lazy var  habitButton: UIButton = {
+    private lazy var habitButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .black
         button.setTitle("Привычка", for: .normal)
@@ -16,7 +16,7 @@ final class SetTrackersViewController: UIViewController {
         return button
     }()
     
-    private lazy var  irregularEventButton: UIButton = {
+    private lazy var irregularEventButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .black
         button.setTitle("Нерегулярное событие", for: .normal)

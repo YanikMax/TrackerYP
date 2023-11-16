@@ -7,8 +7,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
-        let tabBarViewController = TabBarViewController()
-        window.rootViewController = tabBarViewController
+        if UserDefaults.standard.bool(forKey: "reentry") {
+            window.rootViewController = TabBarViewController()
+        } else {
+            window.rootViewController = OnboardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        }
         self.window = window
         window.makeKeyAndVisible()
     }

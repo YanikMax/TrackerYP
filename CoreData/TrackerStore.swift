@@ -59,15 +59,14 @@ final class TrackerStore: NSObject {
             let colorConversion = coreData.colorConversion,
             let daysCount = coreData.records
         else { throw StoreError.decodeError }
-
+        
         guard let color = ColorPalette.deserialize(hexString: colorConversion) else {
             throw StoreError.decodeError
         }
-
-        guard let scheduleString = coreData.schedule, let schedule = WeekDay.decode(from: scheduleString) else {
-            throw StoreError.decodeError
-        }
-
+        
+        let scheduleString = coreData.schedule
+        let schedule = WeekDay.decode(from: scheduleString)
+        
         return Tracker(
             id: id,
             label: label,

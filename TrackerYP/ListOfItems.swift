@@ -1,5 +1,5 @@
 import UIKit
- 
+
 // Настройка линии и закругления углов в таблице в зависимости от места расположения
 final class ListOfItems: UIView {
     // MARK: - Layout elements

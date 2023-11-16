@@ -5,6 +5,8 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserDefaults.standard.set(true, forKey: "reentry")
+        
         let blueColor = UIColor(red: 55/255, green: 114/255, blue: 231/255, alpha: 1.0)
         tabBar.tintColor = blueColor
         tabBar.barTintColor = .gray
