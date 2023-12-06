@@ -11,7 +11,7 @@ final class WeekdayCell: UITableViewCell {
     private lazy var listItem = ListOfItems()
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .blackDay
         label.font = UIFont.systemFont(ofSize: 17)
         return label
     }()
@@ -51,7 +51,7 @@ final class WeekdayCell: UITableViewCell {
     func configure(with weekday: WeekDay, isSelected: Bool, position: ListOfItems.Position) {
         self.weekday = weekday
         listItem.configure(with: position)
-        nameLabel.text = weekday.rawValue
+        nameLabel.text = weekday.fullName
         switchView.isOn = isSelected
     }
 }

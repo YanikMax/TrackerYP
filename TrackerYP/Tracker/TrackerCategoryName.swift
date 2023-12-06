@@ -1,13 +1,13 @@
 import UIKit
 
-// Создаем заголовк внутри раздела коллекции
+// Создаем заголовок внутри раздела коллекции
 final class TrackerCategoryNames: UICollectionReusableView {
     // MARK: - Layout elements
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 19, weight: .bold)
-        label.textColor = .black
+        label.textColor = .blackDay
         return label
     }()
    

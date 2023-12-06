@@ -1,0 +1,87 @@
+/* 
+  Localizable.strings
+  TrackerYP
+
+  Created by Ян Максимов on 21.11.2023.
+  
+*/
+
+//TabBar
+"title.statistics" = "Statistics";
+"title.tracker" = "Trackers";
+
+//Onboarding
+"onePageOnboarding" = "Track only what you want";
+"twoPageOnboarding" = "Even if it's not liters of water and yoga";
+"buttonOnboarding" = "This is technology!";
+
+//Weekday
+"monday" = "Monday";
+"tuesday" = "Tuesday";
+"wednesday" = "Wednesday";
+"thursday" = "Thursday";
+"friday" = "Friday";
+"saturday" = "Saturday";
+"sunday" = "Sunday";
+
+"monday.short" = "Mon";
+"tuesday.short" = "Tue";
+"wednesday.short" = "Wed";
+"thursday.short" = "Thu";
+"friday.short" = "Fri";
+"saturday.short" = "Sat";
+"Sunday.short" = "Sun";
+
+"day" = "day";
+
+//TrackerFormViewController
+"placeholder.textFiled" = "Enter the name of the tracker";
+"scheduleString" = "Every day";
+"ValidationMessage" = "38 characters limit";
+"CancelButton" = "Cancel";
+"confirmButton" = "Create";
+"new.habit" = "New habit";
+"new.irregularEvent" = "New irregular event";
+"labelEmoji" = "Emoji";
+"labelColor" = "Color";
+"edit.habit" = "Edit a habit";
+
+//TrackerViewController
+"searchField" = "Search";
+"plug" = "What will we track?";
+"nothingFound" = "Nothing found";
+"didChangedDatePicker.error" = "An error has occurred: ";
+"sureDeleteCategory" = "Are you sure you want to delete the tracker?";
+"filters" = "Filters";
+"toPin" = "Pin";
+"unPin" = "Unpin";
+
+//ScheduleViewController
+"schedule" = "Schedule";
+
+//SetTrackersViewController
+"habit" = "Habit";
+"irregularEvent" = "Irregular event";
+"setTrackers" = "Tracker creation";
+
+//CategoriesViewController
+"writeCategory" = "Enter the category name";
+"readyButton" = "Done";
+"createCategory" = "New category";
+
+//SetCategoriesViewController
+"plugText" = "Habits and events \n can be combined in meaning";
+"addCategory" = "Add a category";
+"deleteCategory" = "Is this category definitely not needed?";
+"cancelActionDeleteCategory" = "Cancel";
+"deleteActionDeleteCategory" = "Delete";
+"category" = "Category";
+"edit" = "Edit";
+
+//StatisticViewController
+"finishedTrackers" = "Trackers completed";
+"statisticLabel" = "Statistics";
+"noStatistics" = "There is nothing to analyze yet";
+
+//TrackerStore
+"pin" = "Pinned";

@@ -8,8 +8,9 @@ final class SetTrackersViewController: UIViewController {
     
     private lazy var habitButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .black
-        button.setTitle("Привычка", for: .normal)
+        button.backgroundColor = .blackDay
+        button.setTitleColor(.blackNight, for: .normal)
+        button.setTitle(NSLocalizedString("habit", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(didTapHabitButton), for: .touchUpInside)
@@ -18,8 +19,9 @@ final class SetTrackersViewController: UIViewController {
     
     private lazy var irregularEventButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .black
-        button.setTitle("Нерегулярное событие", for: .normal)
+        button.backgroundColor = .blackDay
+        button.setTitleColor(.blackNight, for: .normal)
+        button.setTitle(NSLocalizedString("irregularEvent", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(didTapIrregularEventButton), for: .touchUpInside)
@@ -47,7 +49,7 @@ final class SetTrackersViewController: UIViewController {
     }
     
     private var isValidationMessageVisible = false
-    private var parameters = ["Категория", "Расписание"]
+    private var parameters = [NSLocalizedString("category", comment: ""), NSLocalizedString("schedule", comment: "")]
     private let emojis = emojiArray
     private let colors = UIColor.bunchOfSChoices
     
@@ -60,12 +62,12 @@ final class SetTrackersViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func didTapHabitButton() {
-        title = "Новая привычка"
+        title = NSLocalizedString("new.habit", comment: "")
         delegate?.didSelectTracker(with: .habit)
     }
     
     @objc private func didTapIrregularEventButton() {
-        title = "Новое нерегулярное событие"
+        title = NSLocalizedString("new.irregularEvent", comment: "")
         delegate?.didSelectTracker(with: .irregularEvent)
     }
 }
@@ -81,8 +83,8 @@ extension SetTrackersViewController {
 private extension SetTrackersViewController {
     // MARK: - Layout methods
     func configureViews() {
-        title = "Создание трекера"
-        view.backgroundColor = .white
+        title = NSLocalizedString("setTrackers", comment: "")
+        view.backgroundColor = .whiteDay
         view.addSubview(stackView)
         stackView.addArrangedSubview(habitButton)
         stackView.addArrangedSubview(irregularEventButton)

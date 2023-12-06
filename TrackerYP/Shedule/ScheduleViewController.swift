@@ -18,8 +18,9 @@ final class ScheduleViewController: UIViewController {
     
     private lazy var confirmButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .black
-        button.setTitle("Готово", for: .normal)
+        button.backgroundColor = .blackDay
+        button.setTitle(NSLocalizedString("readyButton", comment: ""), for: .normal)
+        button.setTitleColor(.blackNight, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
@@ -59,8 +60,8 @@ final class ScheduleViewController: UIViewController {
 
 private extension ScheduleViewController {
     func configureViews() {
-        title = "Расписание"
-        view.backgroundColor = .white
+        title = NSLocalizedString("schedule", comment: "")
+        view.backgroundColor = .whiteDay
         [weekdaysTableView, confirmButton].forEach { view.addSubview($0) }
         
         weekdaysTableView.translatesAutoresizingMaskIntoConstraints = false

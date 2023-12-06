@@ -12,23 +12,20 @@ final class SetCategoriesViewController: UIViewController {
         table.separatorStyle = .none
         table.allowsMultipleSelection = false
         table.backgroundColor = .clear
+        table.isScrollEnabled = true
         table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         return table
     }()
     
-    private let starCombined = StarCombined(label: 
-        """
-        Привычки и события можно
-        объединить по смыслу
-        """
-    )
+    private let starCombined = UIStackView()
     
     private lazy var addButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Добавить категорию", for: .normal)
+        button.setTitle(NSLocalizedString("addCategory", comment: ""), for: .normal)
+        button.setTitleColor(.blackNight, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
-        button.backgroundColor = .black
+        button.backgroundColor = .blackDay
         button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         return button
     }()
@@ -53,6 +50,10 @@ final class SetCategoriesViewController: UIViewController {
         configureConstraints()
         viewModel.delegate = self
         viewModel.loadCategories()
+        starCombined.configurePlaceholderStack(imageName: "Plug", text: NSLocalizedString("plugText", comment: ""))
+        if let textLabel = starCombined.subviews.compactMap({ $0 as? UILabel }).first {
+            textLabel.numberOfLines = 2
+        }
     }
     
     // MARK: - Actions
@@ -75,11 +76,11 @@ final class SetCategoriesViewController: UIViewController {
     private func deleteCategory(_ category: TrackerCategory) {
         let alert = UIAlertController(
             title: nil,
-            message: "Эта категория точно не нужна?",
+            message: (NSLocalizedString("deleteCategory", comment: "")),
             preferredStyle: .actionSheet
         )
-        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
-        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { [weak self] _ in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancelActionDeleteCategory", comment: ""), style: .cancel)
+        let deleteAction = UIAlertAction(title: NSLocalizedString("deleteActionDeleteCategory", comment: ""), style: .destructive) { [weak self] _ in
             self?.viewModel.deleteCategory(category)
         }
         
@@ -94,8 +95,8 @@ final class SetCategoriesViewController: UIViewController {
 // MARK: - Layout methods
 private extension SetCategoriesViewController {
     func configureViews() {
-        title = "Категория"
-        view.backgroundColor = .white
+        title = NSLocalizedString("category", comment: "")
+        view.backgroundColor = .whiteDay
         [categoriesView, addButton, starCombined].forEach { view.addSubview($0) }
         
         categoriesView.dataSource = self
@@ -181,10 +182,10 @@ extension SetCategoriesViewController: CategoriesViewModelDelegate {
         
         return UIContextMenuConfiguration(actionProvider:  { _ in
             UIMenu(children: [
-                UIAction(title: "Редактировать") { [weak self] _ in
+                UIAction(title: NSLocalizedString("edit", comment: "")) { [weak self] _ in
                     self?.editCategory(category)
                 },
-                UIAction(title: "Удалить", attributes: .destructive) { [weak self] _ in
+                UIAction(title: NSLocalizedString("deleteActionDeleteCategory", comment: ""), attributes: .destructive) { [weak self] _ in
                     self?.deleteCategory(category)
                 }
             ])
@@ -199,45 +200,43 @@ extension SetCategoriesViewController: CategoryViewControllerDelegate {
     }
 }
 
-// MARK: - Habits and events can be combined in meaning view
-extension SetCategoriesViewController {
-    final class StarCombined: UIStackView {
-        private let starCombinedImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.image = UIImage(named: "Plug")
-            return imageView
-        }()
-        
-        private let starCombinedLabel: UILabel = {
-            let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-            label.textColor = .black
-            label.textAlignment = .center
-            label.numberOfLines = 2
-            return label
-        }()
-        
-        convenience init(label: String) {
-            self.init()
-            starCombinedLabel.text = label
-            setupUI()
-            configureViews()
-        }
-        
-        private func setupUI() {
-            self.translatesAutoresizingMaskIntoConstraints = false
-            self.axis = .vertical
-            self.alignment = .center
-            self.spacing = 8
-        }
-        
-        private func configureViews() {
-            addArrangedSubview(starCombinedImageView)
-            addArrangedSubview(starCombinedLabel)
-            
-            starCombinedImageView.translatesAutoresizingMaskIntoConstraints = false
-            starCombinedLabel.translatesAutoresizingMaskIntoConstraints = false
-            
-        }
-    }
-}
+//// MARK: - Habits and events can be combined in meaning view
+//extension SetCategoriesViewController {
+//    private let starCombinedImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.image = UIImage(named: "Plug")
+//        return imageView
+//    }()
+//    
+//    private let starCombinedLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+//        label.textColor = .blackDay
+//        label.textAlignment = .center
+//        label.numberOfLines = 2
+//        return label
+//    }()
+//    
+//    convenience init(label: String) {
+//        self.init()
+//        starCombinedLabel.text = label
+//        setupUI()
+//        configureViews()
+//    }
+//    
+//    private func setupUI() {
+//        self.translatesAutoresizingMaskIntoConstraints = false
+//        self.axis = .vertical
+//        self.alignment = .center
+//        self.spacing = 8
+//    }
+//    
+//    private func configureViews() {
+//        addArrangedSubview(starCombinedImageView)
+//        addArrangedSubview(starCombinedLabel)
+//        
+//        starCombinedImageView.translatesAutoresizingMaskIntoConstraints = false
+//        starCombinedLabel.translatesAutoresizingMaskIntoConstraints = false
+//        
+//    }
+//}

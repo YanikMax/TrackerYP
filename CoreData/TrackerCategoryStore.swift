@@ -47,7 +47,7 @@ final class TrackerCategoryStore: NSObject {
     // MARK: - Methods
     func categoryCoreData(with id: UUID) throws -> TrackerCategoryCoreData {
         let request = NSFetchRequest<TrackerCategoryCoreData>(entityName: "TrackerCategoryCoreData")
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCategoryCoreData.idCategory), id.uuidString)
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCategoryCoreData.categoryId), id.uuidString)
         
         do {
             let category = try context.fetch(request)
@@ -59,7 +59,7 @@ final class TrackerCategoryStore: NSObject {
     
     internal func makeCategory(from coreData: TrackerCategoryCoreData) throws -> TrackerCategory {
         guard
-            let idString = coreData.idCategory,
+            let idString = coreData.categoryId,
             let id = UUID(uuidString: idString),
             let label = coreData.label
         else { throw StoreError.decodeError }
@@ -69,7 +69,7 @@ final class TrackerCategoryStore: NSObject {
     @discardableResult func makeCategory(with label: String) throws -> TrackerCategory {
         let category = TrackerCategory(label: label)
         let trackerCategoryCoreData = TrackerCategoryCoreData(context: context)
-        trackerCategoryCoreData.idCategory = category.id.uuidString
+        trackerCategoryCoreData.categoryId = category.id.uuidString
         trackerCategoryCoreData.dateCreated = Date()
         trackerCategoryCoreData.label = category.label
         try context.save()
@@ -91,7 +91,7 @@ final class TrackerCategoryStore: NSObject {
     private func getCategoryCoreData(by id: UUID) throws -> TrackerCategoryCoreData {
         fetchedResultsController.fetchRequest.predicate = NSPredicate(
             format: "%K == %@",
-            #keyPath(TrackerCategoryCoreData.idCategory), id.uuidString
+            #keyPath(TrackerCategoryCoreData.categoryId), id.uuidString
         )
         try fetchedResultsController.performFetch()
         guard let category = fetchedResultsController.fetchedObjects?.first else { throw StoreError.fetchCategoryError }

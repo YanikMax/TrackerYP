@@ -4,16 +4,21 @@ final class OnboardingViewController: UIPageViewController {
     
     private lazy var pages: [OnboardingPageViewController] = {
         let firstPage = OnboardingPageViewController()
-        firstPage.configure(with: UIImage(named: "OnboardingBlue"), text: "Отслеживайте только то, что хотите")
+        firstPage.backgroundImage.image = UIImage(named: "OnboardingBlue")
+        firstPage.label.text = NSLocalizedString("onePageOnboarding", comment: "")
+        firstPage.label.textColor = .blackDay
         let secondPage = OnboardingPageViewController()
-        secondPage.configure(with: UIImage(named: "OnboardingPink"), text: "Даже если это\n не литры воды и йога")
+        secondPage.backgroundImage.image = UIImage(named: "OnboardingPink")
+        secondPage.label.text = NSLocalizedString("twoPageOnboarding", comment: "")
+        secondPage.label.textColor = .blackDay
         return [firstPage, secondPage]
     }()
     
     private lazy var enterButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .black
-        button.setTitle("Вот это технологии!", for: .normal)
+        button.backgroundColor = .blackDay
+        button.setTitleColor(.blackNight, for: .normal)
+        button.setTitle(NSLocalizedString("buttonOnboarding", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -24,7 +29,7 @@ final class OnboardingViewController: UIPageViewController {
         let control = UIPageControl()
         control.numberOfPages = pages.count
         control.currentPage = 0
-        control.currentPageIndicatorTintColor = .black
+        control.currentPageIndicatorTintColor = .blackDay
         return control
     }()
     

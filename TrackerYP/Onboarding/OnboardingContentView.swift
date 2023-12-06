@@ -3,13 +3,13 @@ import UIKit
 final class OnboardingPageViewController: UIViewController {
     
     // MARK: - UI Lazy properties
-    private lazy var backgroundImage: UIImageView = {
+    internal lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    private lazy var label: UILabel = {
+    internal lazy var label: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 32, weight: .bold)
         label.numberOfLines = 0

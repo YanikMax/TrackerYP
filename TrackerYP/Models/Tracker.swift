@@ -7,14 +7,18 @@ struct Tracker: Identifiable {
     let color: UIColor
     let schedule: [WeekDay]?
     let daysCount: Int
+    let pin: Bool
+    let category: TrackerCategory
     
-    init(id: UUID = UUID(), label: String, emoji: String, color: UIColor, schedule: [WeekDay]?, daysCount: Int) {
+    init(id: UUID = UUID(), label: String, emoji: String, color: UIColor, schedule: [WeekDay]?, daysCount: Int, pin: Bool, category: TrackerCategory) {
         self.id = id
         self.title = label
         self.emoji = emoji
         self.color = color
         self.schedule = schedule
         self.daysCount = daysCount
+        self.pin = pin
+        self.category = category
     }
     
     init(tracker: Tracker) {
@@ -24,10 +28,12 @@ struct Tracker: Identifiable {
         self.color = tracker.color
         self.schedule = tracker.schedule
         self.daysCount = tracker.daysCount
+        self.pin = tracker.pin
+        self.category = tracker.category
     }
     
     init(data: Data) {
-        guard let emoji = data.emoji, let color = data.color else { fatalError() }
+        guard let emoji = data.emoji, let color = data.color, let category = data.category else { fatalError() }
         
         self.id = UUID()
         self.title = data.label
@@ -35,10 +41,12 @@ struct Tracker: Identifiable {
         self.color = color
         self.schedule = data.schedule
         self.daysCount = data.daysCount
+        self.pin = data.pin
+        self.category = category
     }
     
     var data: Data {
-        Data(label: title, emoji: emoji, color: color, schedule: schedule, daysCount: daysCount)
+        Data(label: title, emoji: emoji, color: color, schedule: schedule, daysCount: daysCount, category: category)
     }
 }
 
@@ -49,5 +57,7 @@ extension Tracker {
         var color: UIColor? = nil
         var schedule: [WeekDay]? = nil
         var daysCount: Int = 0
+        var pin: Bool = false
+        var category: TrackerCategory? = nil
     }
 }

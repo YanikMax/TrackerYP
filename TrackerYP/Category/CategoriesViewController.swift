@@ -7,16 +7,19 @@ protocol CategoryViewControllerDelegate: AnyObject {
 final class CategoryViewController: UIViewController {
     // MARK: - Layout elements
     private lazy var textField: UITextField = {
-        let textField = TextField(placeholder: "Введите название категории")
+        let textField = TextField(placeholder: NSLocalizedString("placeholder.textFiled", comment: ""))
         textField.addTarget(self, action: #selector(didChangedTextField), for: .editingChanged)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeybordWithTap))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
         return textField
     }()
     
     private lazy var readyButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .gray
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("Готово", for: .normal)
+        button.setTitleColor(.whiteDay, for: .normal)
+        button.setTitle(NSLocalizedString("readyButton", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
@@ -30,7 +33,7 @@ final class CategoryViewController: UIViewController {
     private var isConfirmButtonEnabled: Bool = false {
         willSet {
             if newValue {
-                readyButton.backgroundColor = .black
+                readyButton.backgroundColor = .blackDay
                 readyButton.isEnabled = true
             } else {
                 readyButton.backgroundColor = .gray
@@ -69,13 +72,17 @@ final class CategoryViewController: UIViewController {
     @objc private func didTapButton() {
         delegate?.didConfirm(data)
     }
+    
+    @objc private func hideKeybordWithTap() {
+        self.view.endEditing(true)
+    }
 }
 
 // MARK: - Layout methods
 private extension CategoryViewController {
     func configureView() {
-        title = "Новая категория"
-        view.backgroundColor = .white
+        title = NSLocalizedString("createCategory", comment: "")
+        view.backgroundColor = .whiteDay
         [textField, readyButton].forEach { view.addSubview($0) }
         
         readyButton.translatesAutoresizingMaskIntoConstraints = false

@@ -6,19 +6,21 @@ final class CategoryCell: UITableViewCell {
     
     private let label: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .blackDay
+        label.tintColor = .blue
         label.font = UIFont.systemFont(ofSize: 17)
         return label
     }()
     
     private let checkmarkImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.tintColor = .blue
         imageView.image = UIImage(systemName: "checkmark")
         return imageView
     }()
     
     // MARK: - Properties
-    static let identifier = "WeekdayCell"
+    static let identifier = "CategoryCell"
     
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

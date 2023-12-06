@@ -7,7 +7,7 @@ extension UILabel {
         self.text = text
         self.font = UIFont.systemFont(ofSize: ofSize, weight: weight)
         self.textAlignment = .center
-        self.textColor = .black
+        self.textColor = .blackDay
     }
 }
  
