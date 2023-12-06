@@ -496,7 +496,7 @@ extension TrackersViewController: TrackerCellDelegate {
             cell.switchAddDayButton(to: false)
             cell.decreaseCount()
         } else {
-            let trackerRecord = TrackerRecord(trackerId: tracker.id, date: currentDate)
+            let trackerRecord = TrackerRecord(trackerId: tracker.id, date: currentDate.removeTime() ?? Date())
             try? trackerRecordStore.add(trackerRecord)
             cell.switchAddDayButton(to: true)
             cell.increaseCount()
