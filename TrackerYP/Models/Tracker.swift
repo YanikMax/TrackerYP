@@ -10,7 +10,14 @@ struct Tracker: Identifiable {
     let pin: Bool
     let category: TrackerCategory
     
-    init(id: UUID = UUID(), label: String, emoji: String, color: UIColor, schedule: [WeekDay]?, daysCount: Int, pin: Bool, category: TrackerCategory) {
+    init(id: UUID = UUID(),
+         label: String,
+         emoji: String,
+         color: UIColor,
+         schedule: [WeekDay]?,
+         daysCount: Int,
+         pin: Bool,
+         category: TrackerCategory) {
         self.id = id
         self.title = label
         self.emoji = emoji
@@ -46,7 +53,12 @@ struct Tracker: Identifiable {
     }
     
     var data: Data {
-        Data(label: title, emoji: emoji, color: color, schedule: schedule, daysCount: daysCount, category: category)
+        Data(label: title,
+             emoji: emoji,
+             color: color,
+             schedule: schedule,
+             daysCount: daysCount,
+             category: category)
     }
 }
 

@@ -50,7 +50,7 @@ final class SetTrackersViewController: UIViewController {
     
     private var isValidationMessageVisible = false
     private var parameters = [NSLocalizedString("category", comment: ""), NSLocalizedString("schedule", comment: "")]
-    private let emojis = emojiArray
+    private let emojis = EmojiData.emojiArray
     private let colors = UIColor.bunchOfSChoices
     
     // MARK: - Lifecycle

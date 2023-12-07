@@ -41,17 +41,23 @@ final class CategoriesViewModel {
     }
     
     func handleCategoryFormConfirm(data: TrackerCategory.Data) {
-        categories.contains(where: { $0.id == data.id }) ? updateCategory(with: data) : addCategory(with: data.label)
+        if categories.contains(where: { $0.id == data.id }) {
+            try? updateCategory(with: data)
+        } else {
+            try? addCategory(with: data.label)
+        }
     }
     
-    func deleteCategory(_ category: TrackerCategory) {
+    func deleteCategory(_ category: TrackerCategory) throws {
         do {
             try trackerCategoryStore.deleteCategory(category)
             loadCategories()
             if category == selectedCategory {
                 selectedCategory = nil
             }
-        } catch {}
+        } catch {
+            throw CategoriesErrors.deleteError
+        }
     }
     
     // MARK: - Private
@@ -66,18 +72,22 @@ final class CategoriesViewModel {
         }
     }
     
-    private func addCategory(with label: String) {
+    private func addCategory(with label: String) throws {
         do {
             try trackerCategoryStore.makeCategory(with: label)
             loadCategories()
-        } catch {}
+        } catch {
+            throw CategoriesErrors.addCategoryError
+        }
     }
     
-    private func updateCategory(with data: TrackerCategory.Data) {
+    private func updateCategory(with data: TrackerCategory.Data) throws {
         do {
             try trackerCategoryStore.updateCategory(with: data)
             loadCategories()
-        } catch {}
+        } catch {
+            throw CategoriesErrors.updateCategoryError
+        }
     }
 }
 
@@ -85,5 +95,10 @@ final class CategoriesViewModel {
 extension CategoriesViewModel: TrackerCategoryStoreDelegate {
     func didUpdate() {
         categories = getCategoriesFromStore()
+    }
+    
+    func didFailWithError(_ error: Error) {
+        // Обрабатываем ошибку
+        print("Error occurred: \(error.localizedDescription)")
     }
 }

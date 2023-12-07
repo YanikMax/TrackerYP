@@ -33,7 +33,7 @@ final class TrackerFormViewController: UIViewController  {
     
     private lazy var cancelButton: UIButton = {
         let button = makeButton()
-        button.setTitle(NSLocalizedString("cancelButton", comment: ""), for: .normal)
+        button.setTitle(NSLocalizedString("CancelButton", comment: ""), for: .normal)
         button.setTitleColor(.red, for: .normal)
         button.backgroundColor = .whiteDay
         button.layer.borderWidth = 1
@@ -61,7 +61,6 @@ final class TrackerFormViewController: UIViewController  {
     
     private lazy var emojiCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-//        collectionView.backgroundColor = .clear
         collectionView.isScrollEnabled = false
         collectionView.allowsMultipleSelection = false
         collectionView.register(
@@ -75,7 +74,6 @@ final class TrackerFormViewController: UIViewController  {
     
     private lazy var colorCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-//        collectionView.backgroundColor = .clear
         collectionView.isScrollEnabled = false
         collectionView.allowsMultipleSelection = false
         collectionView.register(
@@ -153,15 +151,15 @@ final class TrackerFormViewController: UIViewController  {
     private var validationMessageHeightConstraint: NSLayoutConstraint?
     private var parametersTableViewTopConstraint: NSLayoutConstraint?
     private let parameters = [NSLocalizedString("category", comment: ""), NSLocalizedString("schedule", comment: "")]
-    private let emojis = emojiArray
+    private let emojis = EmojiData.emojiArray
     private let colors = UIColor.bunchOfSChoices
     private let params = UICollectionView.GeometricParams(cellCount: 6, leftInset: 28, rightInset: 28, cellSpacing: 5, topInset: 24, bottomInset: 24, height: 52)
     
     // MARK: - Lifecycle
     init(
-       ActionType: TrackerFormViewController.ActionType,
-       trackerType: SetTrackersViewController.TrackerType,
-       data: Tracker.Data?
+        ActionType: TrackerFormViewController.ActionType,
+        trackerType: SetTrackersViewController.TrackerType,
+        data: Tracker.Data?
     ) {
         self.setAction = ActionType
         self.type = trackerType
@@ -183,7 +181,6 @@ final class TrackerFormViewController: UIViewController  {
         configureConstraints()
         checkFromValidation()
         view.addSubview(completedTrackersLabel)
-
     }
     
     // MARK: - Actions
@@ -254,19 +251,19 @@ final class TrackerFormViewController: UIViewController  {
     
     private func addTracker() {
         guard
-           let emoji = data.emoji,
-           let color = data.color,
-           let category = data.category
+            let emoji = data.emoji,
+            let color = data.color,
+            let category = data.category
         else { return }
         
         let newTracker = Tracker(
-           label: data.label,
-           emoji: emoji,
-           color: color,
-           schedule: data.schedule,
-           daysCount: 0,
-           pin: false,
-           category: category
+            label: data.label,
+            emoji: emoji,
+            color: color,
+            schedule: data.schedule,
+            daysCount: 0,
+            pin: false,
+            category: category
         )
         delegate?.didAddTracker(category: category, trackerToAdd: newTracker)
     }
@@ -287,7 +284,7 @@ private extension TrackerFormViewController {
             }
         case .edit: title = NSLocalizedString("edit.habit", comment: "")
         }
-            
+        
         parametersTableView.dataSource = self
         parametersTableView.delegate = self
         
@@ -461,10 +458,10 @@ extension TrackerFormViewController: UICollectionViewDataSource {
             if emoji == data.emoji {
                 emojiCell.select()
                 emojiCollectionView.selectItem(
-                     at: indexPath,
-                     animated: false,
-                     scrollPosition: .bottom
-                 )
+                    at: indexPath,
+                    animated: false,
+                    scrollPosition: .bottom
+                )
             }
             return emojiCell
         case colorCollectionView:

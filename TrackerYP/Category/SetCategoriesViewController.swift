@@ -81,7 +81,15 @@ final class SetCategoriesViewController: UIViewController {
         )
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancelActionDeleteCategory", comment: ""), style: .cancel)
         let deleteAction = UIAlertAction(title: NSLocalizedString("deleteActionDeleteCategory", comment: ""), style: .destructive) { [weak self] _ in
-            self?.viewModel.deleteCategory(category)
+            do {
+                try self?.viewModel.deleteCategory(category)
+            } catch {
+                // Показать пользователю сообщение об ошибке
+                let errorAlert = UIAlertController(title: "Error", message: "Failed to delete category", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                errorAlert.addAction(okAction)
+                self?.present(errorAlert, animated: true, completion: nil)
+            }
         }
         
         alert.addAction(deleteAction)
@@ -91,7 +99,6 @@ final class SetCategoriesViewController: UIViewController {
     }
 }
 
-// MARK: - EXTENSIONS
 // MARK: - Layout methods
 private extension SetCategoriesViewController {
     func configureViews() {
@@ -199,44 +206,3 @@ extension SetCategoriesViewController: CategoryViewControllerDelegate {
         dismiss(animated: true)
     }
 }
-
-//// MARK: - Habits and events can be combined in meaning view
-//extension SetCategoriesViewController {
-//    private let starCombinedImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.image = UIImage(named: "Plug")
-//        return imageView
-//    }()
-//    
-//    private let starCombinedLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-//        label.textColor = .blackDay
-//        label.textAlignment = .center
-//        label.numberOfLines = 2
-//        return label
-//    }()
-//    
-//    convenience init(label: String) {
-//        self.init()
-//        starCombinedLabel.text = label
-//        setupUI()
-//        configureViews()
-//    }
-//    
-//    private func setupUI() {
-//        self.translatesAutoresizingMaskIntoConstraints = false
-//        self.axis = .vertical
-//        self.alignment = .center
-//        self.spacing = 8
-//    }
-//    
-//    private func configureViews() {
-//        addArrangedSubview(starCombinedImageView)
-//        addArrangedSubview(starCombinedLabel)
-//        
-//        starCombinedImageView.translatesAutoresizingMaskIntoConstraints = false
-//        starCombinedLabel.translatesAutoresizingMaskIntoConstraints = false
-//        
-//    }
-//}

@@ -3,6 +3,7 @@ import CoreData
 
 protocol TrackerCategoryStoreDelegate: AnyObject {
     func didUpdate()
+    func didFailWithError(_ error: Error)
 }
 
 final class TrackerCategoryStore: NSObject {
@@ -36,7 +37,11 @@ final class TrackerCategoryStore: NSObject {
     // MARK: - Lifecycle
     convenience override init() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        try! self.init(context: context)
+        do {
+            try self.init(context: context)
+        } catch {
+            fatalError("Failed to initialize TrackerCategoryStore: \(error)")
+        }
     }
     
     init(context: NSManagedObjectContext) throws {
@@ -57,7 +62,7 @@ final class TrackerCategoryStore: NSObject {
         }
     }
     
-    internal func makeCategory(from coreData: TrackerCategoryCoreData) throws -> TrackerCategory {
+    func makeCategory(from coreData: TrackerCategoryCoreData) throws -> TrackerCategory {
         guard
             let idString = coreData.categoryId,
             let id = UUID(uuidString: idString),
@@ -77,9 +82,14 @@ final class TrackerCategoryStore: NSObject {
     }
     
     func deleteCategory(_ category: TrackerCategory) throws {
-        let categoryToDelete = try getCategoryCoreData(by: category.id)
-        context.delete(categoryToDelete)
-        try context.save()
+        do {
+            let categoryToDelete = try getCategoryCoreData(by: category.id)
+            context.delete(categoryToDelete)
+            try context.save()
+        } catch {
+            delegate?.didFailWithError(error)
+            throw error
+        }
     }
     
     func updateCategory(with data: TrackerCategory.Data) throws {

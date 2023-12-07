@@ -32,6 +32,7 @@ final class TrackerRecordStore: NSObject {
     }
     
     // MARK: - Methods
+    // Добавляет новую запись трекера в хранилище
     func add(_ newRecord: TrackerRecord) throws {
         let trackerCoreData = try trackerStore.getTrackerCoreData(by: newRecord.trackerId)
         let TrackerRecordCoreData = TrackerRecordCoreData(context: context)
@@ -50,6 +51,7 @@ final class TrackerRecordStore: NSObject {
         }
     }
     
+    // Удаляет запись трекера из хранилища
     func remove(_ record: TrackerRecord) throws {
         let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
         request.predicate = NSPredicate(
@@ -64,6 +66,7 @@ final class TrackerRecordStore: NSObject {
         delegate?.didUpdateRecords(completedTrackers)
     }
     
+    // Загружает завершенные трекеры по заданной дате
     func loadCompletedTrackers(by date: Date) throws {
         let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
         request.returnsObjectsAsFaults = false
@@ -74,6 +77,7 @@ final class TrackerRecordStore: NSObject {
         delegate?.didUpdateRecords(completedTrackers)
     }
     
+    // Проверяет, выполнен ли трекер на заданную дату
     func isTrackerCompleted(trackerId: UUID, date: Date) -> Bool {
         let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
         request.predicate = NSPredicate(format: "%K == %@ AND %K == %@",
@@ -88,6 +92,7 @@ final class TrackerRecordStore: NSObject {
         return !trackerRecords.isEmpty
     }
     
+    // Проверяет, не выполнен ли трекер на заданную дату
     func isTrackerNotCompleted(trackerId: UUID, date: Date) -> Bool {
         let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
         request.predicate = NSPredicate(format: "NOT (%K == %@ AND %K == %@)",
@@ -99,11 +104,11 @@ final class TrackerRecordStore: NSObject {
             let trackerRecords = try context.fetch(request)
             return !trackerRecords.isEmpty
         } catch {
-            print("Error fetching records: \(error)")
             return false
         }
     }
     
+    // Загружает все завершенные трекеры из хранилища
     func loadCompletedTrackers() throws -> [TrackerRecord] {
         let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
         let recordsCoreData = try context.fetch(request)
@@ -111,6 +116,7 @@ final class TrackerRecordStore: NSObject {
         return records
     }
     
+    // Удаляет время из даты (оставляет только дату без времени)
     private func makeTrackerRecord(from coreData: TrackerRecordCoreData) throws -> TrackerRecord {
         guard
             let idString = coreData.recordId,
@@ -120,6 +126,21 @@ final class TrackerRecordStore: NSObject {
             let tracker = try? trackerStore.makeTracker(from: trackerCoreData)
         else { throw StoreError.decodeError }
         return TrackerRecord(trackerId: tracker.id, date: date, id: id)
+    }
+    
+    // Загружает отфильтрованные трекеры по заданной дате и строке поиска
+    func loadFilteredTrackers(date: Date, searchString: String) throws {
+        // Выполнить запрос для загрузки трекеров по заданным параметрам
+        let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
+        request.predicate = NSPredicate(format: "%K CONTAINS[cd] %@",
+                                        // выполняется фильтрация по recordId
+                                        #keyPath(TrackerRecordCoreData.recordId), searchString)
+        
+        let filteredRecords = try context.fetch(request)
+        let filteredTrackerRecords = try filteredRecords.map { try makeTrackerRecord(from: $0) }
+        
+        // Вызвать делегата для обновления отфильтрованных записей
+        delegate?.didUpdateRecords(Set(filteredTrackerRecords))
     }
 }
 
@@ -136,20 +157,3 @@ extension Date {
         return calendar.date(from: components)
     }
 }
-
-extension TrackerRecordStore: TrackerRecordStoreMethods {
-    func loadFilteredTrackers(date: Date, searchString: String) throws {
-        // Выполнить запрос для загрузки трекеров по заданным параметрам
-        let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
-        request.predicate = NSPredicate(format: "%K CONTAINS[cd] %@",
-                                        // выполняется фильтрация по recordId
-                                        #keyPath(TrackerRecordCoreData.recordId), searchString)
-        
-        let filteredRecords = try context.fetch(request)
-        let filteredTrackerRecords = try filteredRecords.map { try makeTrackerRecord(from: $0) }
-        
-        // Вызвать делегата для обновления отфильтрованных записей
-        delegate?.didUpdateRecords(Set(filteredTrackerRecords))
-    }
-}
-

@@ -4,6 +4,13 @@ protocol FilterViewControllerDelegate: AnyObject {
     func didSelectFilter(_ filters: String)
 }
 
+protocol FiltersViewControllerProtocol: AnyObject {
+    func filterAllTrackers()
+    func filterTrackersForToday()
+    func filterCompletedTrackers()
+    func filterUnCompletedTrackers()
+}
+
 final class FilterViewController: UIViewController {
     private let filterCellReuseIdentifier = "filterCell"
     var filters: [String] = ["Все трекеры", "Трекеры на сегодня", "Завершенные", "Не завершенные"]
@@ -14,7 +21,7 @@ final class FilterViewController: UIViewController {
     
     private let topLabel: UILabel = {
         let label = UILabel()
-        label.text = "Фильтры"
+        label.text = NSLocalizedString("filters", comment: "")
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -53,9 +60,9 @@ final class FilterViewController: UIViewController {
             topLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27),
             topLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             topLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            topLabel.heightAnchor.constraint(equalToConstant: 20), // Установите нужную высоту
+            topLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            tableView.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 38),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)

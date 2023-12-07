@@ -40,25 +40,23 @@ final class StatisticViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         statisticViewModel?.viewWillAppear()
+        AnalyticsService.shared.sendOpenScreenEvent(screen: .main)
     }
     
     private func setupCompletedTrackersBlock(with count: Int) {
         completedTrackersView.setNumber(count)
     }
-    
+
     private func checkMainPlaceholderVisability() {
-        let isHidden = trackerStore.numberOfTrackers == 0
-        mainSpacePlaceholderStack.isHidden = !isHidden
+        let hasTrackers = !statisticsStack.isHidden
+        mainSpacePlaceholderStack.isHidden = hasTrackers
     }
-    
+
     private func checkContent(with trackers: [TrackerRecord]) {
-        if trackers.isEmpty {
-            statisticsStack.isHidden = true
-        } else {
-            statisticsStack.isHidden = false
-        }
-        
+        statisticsStack.isHidden = trackers.isEmpty
+        checkMainPlaceholderVisability()
     }
+
 }
 
 // MARK: - Layout methods
@@ -81,7 +79,8 @@ private extension StatisticViewController {
             
             statisticsStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             statisticsStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            statisticsStack.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+            statisticsStack.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            completedTrackersView.topAnchor.constraint(equalTo: statisticsStack.topAnchor, constant: 228)
         ])
     }
 }

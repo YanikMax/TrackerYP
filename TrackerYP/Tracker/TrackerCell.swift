@@ -104,13 +104,8 @@ final class TrackerCell: UICollectionViewCell {
     }
     
     func switchAddDayButton(to isCompleted: Bool) {
-        if isCompleted {
-            addDayButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
-            addDayButton.layer.opacity = 0.3
-        } else {
-            addDayButton.setImage(UIImage(systemName: "plus"), for: .normal)
-            addDayButton.layer.opacity = 1
-        }
+        addDayButton.setImage(isCompleted ? UIImage(systemName: "checkmark") : UIImage(systemName: "plus"), for: .normal)
+        addDayButton.layer.opacity = isCompleted ? 0.3 : 1
     }
     
     func increaseCount() {
@@ -123,7 +118,7 @@ final class TrackerCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func didTapAddDayButton() {
-        analyticsService.report(event: "click", params: ["screen": "Main","item": "track"])
+        AnalyticsService.shared.sendButtonClickEvent(screen: .main, item: .track)
         guard let tracker = tracker else { return }
         
         if isDateInFuture {

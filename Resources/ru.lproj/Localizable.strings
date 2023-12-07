@@ -55,6 +55,7 @@
 "filters" = "Фильтры";
 "toPin" = "Закрепить";
 "unPin" = "Открепить";
+"nothingFound" = "ничего не найдено";
 
 //ScheduleViewController
 "schedule" = "Расписание";
@@ -85,3 +86,6 @@
 
 //TrackerStore
 "pin" = "Закрепленные";
+
+//FilterViewController
+"filters" = "Фильтры";

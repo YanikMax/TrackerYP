@@ -1,6 +1,6 @@
 import UIKit
 
-class TabBarViewController: UITabBarController {
+final class TabBarViewController: UITabBarController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,12 +17,6 @@ class TabBarViewController: UITabBarController {
         
         let blueColor = UIColor(red: 55/255, green: 114/255, blue: 231/255, alpha: 1.0)
         tabBar.tintColor = blueColor
-//        tabBar.barTintColor = .gray
-//        tabBar.backgroundColor = .white
-//        
-//        tabBar.layer.borderColor = UIColor.lightGray.cgColor
-//        tabBar.layer.borderWidth = 1
-//        tabBar.layer.masksToBounds = true
         
         let trackerStore = TrackerStore()
         let trackersViewController = TrackersViewController(trackerStore: trackerStore)

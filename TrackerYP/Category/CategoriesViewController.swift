@@ -83,10 +83,11 @@ private extension CategoryViewController {
     func configureView() {
         title = NSLocalizedString("createCategory", comment: "")
         view.backgroundColor = .whiteDay
-        [textField, readyButton].forEach { view.addSubview($0) }
-        
-        readyButton.translatesAutoresizingMaskIntoConstraints = false
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        [textField, 
+         readyButton].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
     }
     
     func configureConstraints() {

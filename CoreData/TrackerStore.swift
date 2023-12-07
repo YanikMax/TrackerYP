@@ -17,8 +17,10 @@ protocol TrackerStoreProtocol {
     func updateTracker(_ tracker: Tracker, with data: Tracker.Data) throws
     func deleteTracker(_ tracker: Tracker) throws
     func loadFilteredTrackers(date: Date, searchString: String) throws
-//    func filterCompleted(for date: Date) throws
-//    func filterNotCompleted(for date: Date) throws
+    func filterForToday()
+    func filterCompleted(for date: Date)
+    func filterNotCompleted(for date: Date)
+    func clearFilters()
 }
 
 final class TrackerStore: NSObject {
@@ -137,15 +139,6 @@ final class TrackerStore: NSObject {
     }
 }
 
-extension TrackerStore {
-    enum StoreError: Error {
-        case decodeError,
-             fetchTrackerError,
-             deleteError,
-             pinError
-    }
-}
-
 // MARK: - TrackerStoreProtocol
 extension TrackerStore: TrackerStoreProtocol {
     
@@ -249,33 +242,48 @@ extension TrackerStore: TrackerStoreProtocol {
         delegate?.didUpdate() // Уведомление делегата о изменении
     }
     
-//    func filterCompleted(for date: Date) {
-//        let completedPredicate = NSPredicate(format: "ANY records.date == %@", date as NSDate)
-//        fetchedResultsController.fetchRequest.predicate = completedPredicate
-//        
-//        do {
-//            try fetchedResultsController.performFetch()
-//        } catch {
-//            print("Error performing fetch: \(error)")
-//        }
-//        
-//        delegate?.didUpdate()
-//    }
-//    
-//    func filterNotCompleted(for date: Date) {
-//        let currentFilterWeekDay = (Calendar.current.component(.weekday, from: date) + 5) % 7
-//        let notCompletedPredicate = NSPredicate(format: "SUBQUERY(records, $record, $record.date == %@).@count == 0 AND schedule CONTAINS[c] %@", date as NSDate, "\(currentFilterWeekDay)")
-//        fetchedResultsController.fetchRequest.predicate = notCompletedPredicate
-//        
-//        do {
-//            try fetchedResultsController.performFetch()
-//            print("Filter not completed result count: \(fetchedResultsController.sections?.first?.numberOfObjects ?? 0)")
-//        } catch {
-//            print("Error performing fetch: \(error)")
-//        }
-//        
-//        delegate?.didUpdate()
-//    }
+    func filterForToday() {
+        let currentDate = Date().removeTime()
+        let datePredicate = NSPredicate(format: "ANY records.date == %@", currentDate! as NSDate)
+        fetchedResultsController.fetchRequest.predicate = datePredicate
+        
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error performing fetch: \(error)")
+        }
+        delegate?.didUpdate() // Уведомление делегата о изменении
+    }
+    
+    func filterCompleted(for date: Date) {
+        let completedPredicate = NSPredicate(format: "ANY records.date == %@", date.removeTime()! as NSDate)
+        fetchedResultsController.fetchRequest.predicate = completedPredicate
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error performing fetch: \(error)")
+        }
+        delegate?.didUpdate() // Уведомление делегата о изменении
+    }
+    
+    func filterNotCompleted(for date: Date) {
+        let currentFilterWeekDay = (Calendar.current.component(.weekday, from: date) + 5) % 7
+        let notCompletedPredicate = NSPredicate(format: "SUBQUERY(records, $record, $record.date == %@).@count == 0 AND mySchedule CONTAINS[c] %@", date.removeTime()! as NSDate, "\(currentFilterWeekDay)")
+        fetchedResultsController.fetchRequest.predicate = notCompletedPredicate
+        delegate?.didUpdate() // Уведомление делегата о изменении
+    }
+    
+    func clearFilters() {
+        fetchedResultsController.fetchRequest.predicate = nil
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error performing fetch: \(error)")
+        }
+    }
 }
 
 // MARK: - NSFetchedResultsControllerDelegate

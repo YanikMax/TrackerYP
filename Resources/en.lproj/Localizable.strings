@@ -55,6 +55,7 @@
 "filters" = "Filters";
 "toPin" = "Pin";
 "unPin" = "Unpin";
+"nothingFound" = "Nothing Found";
 
 //ScheduleViewController
 "schedule" = "Schedule";
@@ -85,3 +86,6 @@
 
 //TrackerStore
 "pin" = "Pinned";
+
+//FilterViewController
+"filters" = "Filters";

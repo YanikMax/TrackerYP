@@ -11,7 +11,13 @@ extension UICollectionView {
         let bottomInset: CGFloat
         let height: CGFloat
         
-        init(cellCount: CGFloat, leftInset: CGFloat, rightInset: CGFloat, cellSpacing: CGFloat, topInset: CGFloat, bottomInset: CGFloat, height: CGFloat) {
+        init(cellCount: CGFloat,
+             leftInset: CGFloat,
+             rightInset: CGFloat,
+             cellSpacing: CGFloat,
+             topInset: CGFloat,
+             bottomInset: CGFloat,
+             height: CGFloat) {
             self.cellCount = cellCount
             self.leftInset = leftInset
             self.rightInset = rightInset

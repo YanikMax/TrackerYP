@@ -12,6 +12,7 @@
 		28180E8F2B207700008602CA /* TrackerYPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28180E8E2B207700008602CA /* TrackerYPTests.swift */; };
 		28180E982B207969008602CA /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 28180E972B207969008602CA /* InlineSnapshotTesting */; };
 		28180E9A2B207969008602CA /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 28180E992B207969008602CA /* SnapshotTesting */; };
+		28180E9C2B20C082008602CA /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28180E9B2B20C082008602CA /* Error.swift */; };
 		2818C4FA2AF496C400111B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2818C4F92AF496C400111B51 /* Main.storyboard */; };
 		2818C4FC2AF496D700111B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2818C4FB2AF496D700111B51 /* LaunchScreen.storyboard */; };
 		2818C4FF2AF6D0D900111B51 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2818C4FD2AF6D0D900111B51 /* Model.xcdatamodeld */; };
@@ -74,6 +75,7 @@
 		28062AA12AD747A10066BFFE /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		28180E8C2B207700008602CA /* TrackerYPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackerYPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28180E8E2B207700008602CA /* TrackerYPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerYPTests.swift; sourceTree = "<group>"; };
+		28180E9B2B20C082008602CA /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		2818C4F92AF496C400111B51 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2818C4FB2AF496D700111B51 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2818C4FE2AF6D0D900111B51 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				28F528F32AC23B75002B1C7F /* Weekday.swift */,
 				28F528F42AC23B75002B1C7F /* Tracker.swift */,
 				28F528F52AC23B75002B1C7F /* TrackerRecord.swift */,
+				28180E9B2B20C082008602CA /* Error.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				28ACB08E2AFEA8620095C40A /* OnboardingPageViewController.swift in Sources */,
 				28F528DB2AC23B4A002B1C7F /* UILabelExtension.swift in Sources */,
 				28F529012AC23B9F002B1C7F /* WeekdayCell.swift in Sources */,
+				28180E9C2B20C082008602CA /* Error.swift in Sources */,
 				28F529002AC23B9F002B1C7F /* TabBar.swift in Sources */,
 				28F528EF2AC23B6F002B1C7F /* TrackerCategoryName.swift in Sources */,
 				2818C5032AF6D3C500111B51 /* TrackerCategoryStore.swift in Sources */,
