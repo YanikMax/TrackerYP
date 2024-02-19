@@ -1,0 +1,91 @@
+/*
+  Localizable.strings
+  TrackerYP
+
+  Created by Ян Максимов on 21.11.2023.
+  
+*/
+
+//TabBar
+"title.statistics" = "Статистика";
+"title.tracker" = "Трекеры";
+
+//Onboarding
+"onePageOnboarding" = "Отслеживайте только то, что хотите";
+"twoPageOnboarding" = "Даже если это не литры воды и йога";
+"buttonOnboarding" = "Вот это технологии!";
+
+//Weekday
+"monday" = "Понедельник";
+"tuesday" = "Вторник";
+"wednesday" = "Среда";
+"thursday" = "Четверг";
+"friday" = "Пятница";
+"saturday" = "Суббота";
+"sunday" = "Воскресенье";
+
+"monday.short" = "Пн";
+"tuesday.short" = "Вт";
+"wednesday.short" = "Ср";
+"thursday.short" = "Чт";
+"friday.short" = "Пт";
+"saturday.short" = "Сб";
+"sunday.short" = "Вс";
+
+"day" = "день";
+
+//TrackerFormViewController
+"placeholder.textFiled" = "Введите название трекера";
+"scheduleString" = "Каждый день";
+"validationMessage" = "Ограничение 38 символов";
+"CancelButton" = "Отменить";
+"confirmButton" = "Создать";
+"new.habit" = "Новая привычка";
+"new.irregularEvent" = "Новое нерегулярное событие";
+"labelEmoji" = "Emoji";
+"labelColor" = "Цвет";
+"edit.habit" = "Редактирование привычки";
+
+//TrackerViewController
+"searchField" = "Поиск";
+"plug" = "Что будем отслеживать?";
+"nothingFound" = "Ничего не найдено";
+"didChangedDatePicker.error" = "Произошла ошибка: ";
+"sureDeleteCategory" = "Уверены что хотите удалить трекер?";
+"filters" = "Фильтры";
+"toPin" = "Закрепить";
+"unPin" = "Открепить";
+"nothingFound" = "ничего не найдено";
+
+//ScheduleViewController
+"schedule" = "Расписание";
+
+//SetTrackersViewController
+"habit" = "Привычка";
+"irregularEvent" = "Нерегулярное событие";
+"setTrackers" = "Создание трекера";
+
+//CategoriesViewController
+"writeCategory" = "Введите название категории";
+"readyButton" = "Готово";
+"createCategory" = "Новая категория";
+
+//SetCategoriesViewController
+"plugText" = "Привычки и события \n можно объединить по смыслу";
+"addCategory" = "Добавить категорию";
+"deleteCategory" = "Эта категория точно не нужна?";
+"cancelActionDeleteCategory" = "Отменить";
+"deleteActionDeleteCategory" = "Удалить";
+"category" = "Категория";
+"edit" = "Редактировать";
+
+//StatisticViewController
+"finishedTrackers" = "Трекеров завершено";
+"statisticLabel" = "Статистика";
+"noStatistics" = "Анализировать пока нечего";
+
+//TrackerStore
+"pin" = "Закрепленные";
+
+//FilterViewController
+"filters" = "Фильтры";
