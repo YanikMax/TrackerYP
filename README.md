@@ -175,3 +175,8 @@
 1. Приложение должно поддерживать iPhone X и выше и адаптировано под iPhone SE, минимальная поддерживаемая версия операционной системы - iOS 13.4;
 2. В приложении используется стандартный шрифт iOS – SF Pro.
 3. Для хранения данных о привычках используется Core Data.
+
+# Скриншоты
+![Simulator Screenshot - iPhone 15 - 2024-02-19 at 09 21 49](https://github.com/YanikMax/TrackerYP/assets/86563656/0a653198-c0ce-48e4-af06-4b535841ea8c)
+![Simulator Screenshot - iPhone 15 - 2024-02-19 at 09 22 10](https://github.com/YanikMax/TrackerYP/assets/86563656/44be30e5-1428-449a-b6a3-c0b955d14173)
+![Simulator Screenshot - iPhone 15 - 2024-02-19 at 09 22 59](https://github.com/YanikMax/TrackerYP/assets/86563656/80ac3fac-7192-4691-85c3-f268c56fee89)
