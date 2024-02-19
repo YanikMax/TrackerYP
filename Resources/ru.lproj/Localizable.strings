@@ -38,7 +38,7 @@
 "placeholder.textFiled" = "Введите название трекера";
 "scheduleString" = "Каждый день";
 "validationMessage" = "Ограничение 38 символов";
-"cancelButton" = "Отменить";
+"CancelButton" = "Отменить";
 "confirmButton" = "Создать";
 "new.habit" = "Новая привычка";
 "new.irregularEvent" = "Новое нерегулярное событие";
